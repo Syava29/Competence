@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-E:\Study\Competence\Competence\Competence\obj\Debug\
+E:\Study\Competence\Competence\Competence\obj\Release\
 Competence
 none
 false
-DEBUG;TRACE
+TRACE
 E:\Study\Competence\Competence\Competence\App.xaml
 11151548125
 
@@ -16,5 +16,5 @@ E:\Study\Competence\Competence\Competence\App.xaml
 17-286207993
 MainWindow.xaml;
 
-False
+True
 

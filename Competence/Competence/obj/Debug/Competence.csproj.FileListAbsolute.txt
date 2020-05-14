@@ -12,3 +12,17 @@ E:\1313\Competence\Competence\obj\Debug\Competence.Properties.Resources.resource
 E:\1313\Competence\Competence\obj\Debug\Competence.csproj.GenerateResource.cache
 E:\1313\Competence\Competence\obj\Debug\Competence.exe
 E:\1313\Competence\Competence\obj\Debug\Competence.pdb
+E:\Study\Competence\Competence\Competence\bin\Debug\Competence.exe.config
+E:\Study\Competence\Competence\Competence\bin\Debug\Competence.exe
+E:\Study\Competence\Competence\Competence\bin\Debug\Competence.pdb
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence.csprojAssemblyReference.cache
+E:\Study\Competence\Competence\Competence\obj\Debug\MainWindow.g.cs
+E:\Study\Competence\Competence\Competence\obj\Debug\App.g.cs
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence_MarkupCompile.cache
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence_MarkupCompile.lref
+E:\Study\Competence\Competence\Competence\obj\Debug\MainWindow.baml
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence.g.resources
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence.Properties.Resources.resources
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence.csproj.GenerateResource.cache
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence.exe
+E:\Study\Competence\Competence\Competence\obj\Debug\Competence.pdb

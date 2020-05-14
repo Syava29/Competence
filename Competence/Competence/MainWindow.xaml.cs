@@ -37,7 +37,7 @@ namespace Competence
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int i = 0;
-            
+            string[] test22;
             komp1.Items.Clear();
             //textBox.Clear(); 
             if (comboBox.SelectedIndex == 0) 
