@@ -25,8 +25,17 @@ namespace Competence
         public MainWindow()
         {
             InitializeComponent();
-             //List<string> kompet = new List<string>();
+            //List<string> kompet = new List<string>();
             //kompet.Add(komp1.SelectedItem.ToString());
+            komp1.Items.Clear();
+            //textBox.Clear();        
+            komp1.Items.Add("ОК-1"); komp1.Items.Add("ОК-2"); komp1.Items.Add("ОК-3"); komp1.Items.Add("ОК-4"); komp1.Items.Add("ОК-5");
+            //kompet.Add(listBox1.SelectedItem.ToString());
+            komp1.Items.Add("ОПК-2"); komp1.Items.Add("ОПК-3");
+            //kompett2.Add(listBox1.SelectedItem.ToString());
+
+            komp1.Items.Add("ПК-23");
+
         }
 // string[] kompet1, kompet2, kompet3, kompet4, kompet5, kompet6, kompet7;
 
@@ -34,32 +43,15 @@ namespace Competence
         List<string> kompett2 = new List<string>();
         List<string> kompett3 = new List<string>();
         //List<string> kompet = new List<string>();
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+        
             int i = 0;
             string[] test22;
-            komp1.Items.Clear();
-            //textBox.Clear(); 
-            if (comboBox.SelectedIndex == 0) 
-            {
-                komp1.Items.Add("ОК-1"); komp1.Items.Add("ОК-2"); komp1.Items.Add("ОК-3"); komp1.Items.Add("ОК-4"); komp1.Items.Add("ОК-5");
-                //kompet.Add(listBox1.SelectedItem.ToString());
-            }
-            
-            if (comboBox.SelectedIndex == 1)
-            {
-                komp1.Items.Add("ОПК-2"); komp1.Items.Add("ОПК-3");
-                //kompett2.Add(listBox1.SelectedItem.ToString());
-            }
-            if (comboBox.SelectedIndex == 2)
-            {
-                komp1.Items.Add("ПК-23");
+           
                 //kompett3.Add(listBox1.SelectedItem.ToString());
-            }
             // komp[i] = komp1.SelectedItem.ToString();
             //textBox_Copy.Text += kompet[0];
             
-        }
+        
         
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

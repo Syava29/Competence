@@ -13,12 +13,6 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <ListBox x:Name="komp1" HorizontalAlignment="Left" Height="151" Margin="10,48,0,0" VerticalAlignment="Top" Width="245" SelectionChanged="listBox_SelectionChanged"/>
-        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="245" SelectionChanged="comboBox_SelectionChanged">
-            <ComboBoxItem Content="Общекультурные компетенции" HorizontalAlignment="Left" Width="243"/>
-            <ComboBoxItem Content="Общепрофессиональные компетенции" HorizontalAlignment="Left" Width="243"/>
-            <ComboBoxItem Content="Профессиональные компетенции" HorizontalAlignment="Left" Width="243"/>
-
-        </ComboBox>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="10,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245"/>
         <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="151" Margin="282,48,0,0" VerticalAlignment="Top" Width="348" SelectionChanged="listBox1_SelectionChanged">
             <ListBoxItem Content="Имитационное моделирование экономиеских процессов"/>
