@@ -36,15 +36,22 @@ namespace Competence
 
             komp1.Items.Add("ПК-23");
 
+            listBox1.Items.Add("Правоведение"); listBox1.Items.Add("Эконометрика");
+            listBox1.Items.Add("Теория нейронных сетей"); listBox1.Items.Add("Имитационное моделирование экономических процессов");
+            listBox1.Items.Add("Численные методы"); listBox1.Items.Add("Проектная деятельность");
+            
         }
 // string[] kompet1, kompet2, kompet3, kompet4, kompet5, kompet6, kompet7;
 
         List<string> kompet = new List<string>();
         List<string> kompett2 = new List<string>();
         List<string> kompett3 = new List<string>();
+        List<string> discip1 = new List<string>(); List<string> discip2 = new List<string>();
+        List<string> discip3 = new List<string>(); List<string> discip4 = new List<string>();
+        List<string> discip5 = new List<string>(); List<string> discip6 = new List<string>();
         //List<string> kompet = new List<string>();
-        
-            int i = 0;
+
+        int i = 0;
             string[] test22;
            
                 //kompett3.Add(listBox1.SelectedItem.ToString());
@@ -55,8 +62,31 @@ namespace Competence
         
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
-            textBox.Text = komp1.SelectedItem.ToString();
+            if (listBox1.SelectedIndex == 0)
+            {
+                discip1.Add(komp1.SelectedItem.ToString());
+                tabbox1.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+            if (listBox1.SelectedIndex == 1)
+            {
+                discip2.Add(komp1.SelectedItem.ToString());
+                tabbbox2.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+            if (listBox1.SelectedIndex == 2)
+            {
+                discip3.Add(komp1.SelectedItem.ToString());
+                tabbbox3.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+            if (listBox1.SelectedIndex == 3)
+            {
+                discip4.Add(komp1.SelectedItem.ToString());
+                tabbbox4.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+            // textBox.Text = komp1.SelectedItem.ToString();
             if (komp1.SelectedIndex == 0)
             {
                 kompet.Add(listBox1.SelectedItem.ToString());
@@ -95,6 +125,34 @@ namespace Competence
            // kompet.Add(komp1.SelectedItem.ToString());
         }
 
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBox1.SelectedIndex == 0)
+            {
+                discip1.Add(komp1.SelectedItem.ToString());
+                tabbox1.Text += komp1.SelectedItem.ToString()+'\n';
 
+            }
+            if (listBox1.SelectedIndex == 1)
+            {
+                discip2.Add(komp1.SelectedItem.ToString());
+                tabbbox2.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+            if (listBox1.SelectedIndex == 2)
+            {
+                discip3.Add(komp1.SelectedItem.ToString());
+                tabbbox3.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+            if (listBox1.SelectedIndex == 3)
+            {
+                discip4.Add(komp1.SelectedItem.ToString());
+                tabbbox4.Text += komp1.SelectedItem.ToString() + '\n';
+
+            }
+        }
+
+       
     }
 }

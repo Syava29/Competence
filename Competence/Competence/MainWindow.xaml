@@ -12,33 +12,49 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="komp1" HorizontalAlignment="Left" Height="151" Margin="10,48,0,0" VerticalAlignment="Top" Width="245" SelectionChanged="listBox_SelectionChanged"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="45" Margin="10,204,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245"/>
-        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="151" Margin="282,48,0,0" VerticalAlignment="Top" Width="348" SelectionChanged="listBox1_SelectionChanged">
-            <ListBoxItem Content="Имитационное моделирование экономиеских процессов"/>
-            <ListBoxItem Content="Алгебра"/>
-            <ListBoxItem Content="Математическая логика"/>
-            <ListBoxItem Content="Машинное зрение"/>
-            <CheckBox x:Name="checkBox2" Content="Проектирование"/>
-            <CheckBox x:Name="checkBox2_Copy1" Content="История"/>
-            <CheckBox x:Name="checkBox2_Copy" Content="Мат стат"/>
+        <ListBox x:Name="komp1" HorizontalAlignment="Left" Height="326" Margin="464,33,0,0" VerticalAlignment="Top" Width="112" SelectionChanged="listBox_SelectionChanged"/>
+        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="151" Margin="59,33,0,0" VerticalAlignment="Top" Width="348" SelectionChanged="listBox1_SelectionChanged"/>
 
-        </ListBox>
-        
-        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="110" Margin="11,388,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
-        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="110" Margin="11,523,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
-        <TextBox x:Name="textBox1_Copy1" HorizontalAlignment="Left" Height="110" Margin="10,662,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
-        <Label x:Name="label" Content="Знать" HorizontalAlignment="Left" Height="29" Margin="10,359,0,0" VerticalAlignment="Top" Width="123"/>
-        <Label x:Name="label_Copy" Content="Уметь" HorizontalAlignment="Left" Height="29" Margin="11,498,0,0" VerticalAlignment="Top" Width="123"/>
-        <Label x:Name="label_Copy1" Content="Владеть" HorizontalAlignment="Left" Height="29" Margin="11,633,0,0" VerticalAlignment="Top" Width="124"/>
-        <ListBox x:Name="listBox_com" HorizontalAlignment="Left" Height="139" Margin="488,388,0,0" VerticalAlignment="Top" Width="246" SelectionChanged="listBox_SelectionChanged"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="46" Margin="11,308,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188"/>
-        <Button x:Name="button" Content="Добавить планируемые результаты обучения" HorizontalAlignment="Left" Height="50" Margin="10,788,0,0" VerticalAlignment="Top" Width="291"/>
-        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="488,354,0,0" VerticalAlignment="Top" Width="246" Height="29" SelectionChanged="comboBox1_SelectionChanged"/>
-        <Button x:Name="button1" Content="Закрепить" HorizontalAlignment="Left" Height="37" Margin="656,102,0,0" VerticalAlignment="Top" Width="242"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="45" Margin="282,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348"/>
-        <CheckBox x:Name="checkBox" Content="CheckBox" HorizontalAlignment="Left" Margin="683,205,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBox1" Content="CheckBox" HorizontalAlignment="Left" Margin="683,184,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="110" Margin="15,500,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
+        <TextBox x:Name="textBox1_Copy" HorizontalAlignment="Left" Height="110" Margin="15,635,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
+        <TextBox x:Name="textBox1_Copy1" HorizontalAlignment="Left" Height="110" Margin="14,774,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
+        <Label x:Name="label" Content="Знать" HorizontalAlignment="Left" Height="29" Margin="14,471,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label x:Name="label_Copy" Content="Уметь" HorizontalAlignment="Left" Height="29" Margin="15,610,0,0" VerticalAlignment="Top" Width="123"/>
+        <Label x:Name="label_Copy1" Content="Владеть" HorizontalAlignment="Left" Height="29" Margin="15,745,0,0" VerticalAlignment="Top" Width="124"/>
+        <ListBox x:Name="listBox_com" HorizontalAlignment="Left" Height="139" Margin="492,500,0,0" VerticalAlignment="Top" Width="246" SelectionChanged="listBox_SelectionChanged"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="46" Margin="15,420,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188"/>
+        <Button x:Name="button" Content="Добавить планируемые результаты обучения" HorizontalAlignment="Left" Height="50" Margin="14,900,0,0" VerticalAlignment="Top" Width="291"/>
+        <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="492,466,0,0" VerticalAlignment="Top" Width="246" Height="29" SelectionChanged="comboBox1_SelectionChanged"/>
+        <Button x:Name="button1" Content="Закрепить" HorizontalAlignment="Left" Height="37" Margin="600,376,0,0" VerticalAlignment="Top" Width="242" Click="button1_Click"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="45" Margin="59,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348"/>
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="327" Margin="600,32,0,0" VerticalAlignment="Top" Width="624">
+            <TabItem Header="Правоведение">
+                <Grid Background="#FFE5E5E5" Margin="0,-1,0,1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="29*"/>
+                        <ColumnDefinition Width="589*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="tabbox1" HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Эконометрика">
+                <Grid Background="#FFE5E5E5" Margin="0,-1,0,1">
+                    <TextBox x:Name="tabbbox2" HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Теория нейронных сетей">
+                <Grid Background="#FFE5E5E5" Margin="0,-1,0,1">
+                    <TextBox x:Name="tabbbox3" HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Численные методы">
+                <Grid Background="#FFE5E5E5" Margin="0,-1,0,1">
+                    <TextBox x:Name="tabbbox4" HorizontalAlignment="Left" Height="279" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="584"/>
+                </Grid>
+            </TabItem>
+            <TabItem/>
+            <ListBoxItem/>
+        </TabControl>
 
     </Grid>
 </Window>
