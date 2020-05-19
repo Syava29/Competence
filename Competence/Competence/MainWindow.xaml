@@ -12,7 +12,7 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="komp1" HorizontalAlignment="Left" Height="326" Margin="464,33,0,0" VerticalAlignment="Top" Width="112" SelectionChanged="listBox_SelectionChanged"/>
+        <ListBox x:Name="komp1" HorizontalAlignment="Left" Height="326" Margin="452,33,0,0" VerticalAlignment="Top" Width="124" SelectionChanged="listBox_SelectionChanged"/>
         <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="151" Margin="59,33,0,0" VerticalAlignment="Top" Width="348" SelectionChanged="listBox1_SelectionChanged"/>
 
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="110" Margin="15,500,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="439"/>
@@ -55,6 +55,8 @@
             <TabItem/>
             <ListBoxItem/>
         </TabControl>
+        <Label x:Name="label1" Content="Выбор дисциплины" HorizontalAlignment="Left" Margin="59,10,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Выбор компетенций" HorizontalAlignment="Left" Margin="452,7,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
