@@ -15,17 +15,15 @@ ffile = open(filename,'r')
 
 text_file = open(filename2, 'w')
 
-text_file.write
-
 wb = load_workbook(filename1)
 sheet = wb.get_sheet_by_name('Лист1')
 mtrx = np.zeros([100,3])
-# Retrieve cell value 
+
 sheet.cell(row=1, column=2).value
 for row in sheet['A1':'C35']:
     string = ''
     for cell in row:
-        string = string + str(cell.value) + '\n'
+        string = string + str(cell.value) + '\n\n'
     text_file.write(string)
 
 
