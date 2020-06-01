@@ -1,5 +1,5 @@
 word = input()
 filename = "primer.txt"
 ffile = open(filename,'r',encoding="utf-8")
-print('Есть код' if word in ffile.read() else 'Нет кода')
+print('Слово "' + word +'" встречается' if word in ffile.read() else 'Нет такого слова')
 print(ffile)
