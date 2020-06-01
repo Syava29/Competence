@@ -1,6 +1,7 @@
 #import openpyxl as excl
 from openpyxl import load_workbook
 import numpy as np
+import re as rrre
 
 filename1 = "Компетенции.xlsx"
 filename2 = "load.txt"
@@ -20,7 +21,7 @@ sheet = wb.get_sheet_by_name('Лист1')
 mtrx = np.zeros([100,3])
 
 sheet.cell(row=1, column=2).value
-for row in sheet['A1':'C35']:
+for row in sheet['A1':'D35']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
