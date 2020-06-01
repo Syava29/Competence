@@ -11,19 +11,17 @@ spisok = []
 spisok_book = []
 spisok_description = []
 
-word = input()
+
 komp = input()
 filename = "load.txt"
 ffile = open(filename,'r')
-
-
 
 
 text_file = open(filename2, 'w')
 text_file2 = open(filename3, 'w')
 
 wb = load_workbook(filename1)
-sheet = wb.get_sheet_by_name('Лист1')
+sheet = wb['Лист1']
 mtrx = np.zeros([100,3])
 
 sheet.cell(row=1, column=2).value
@@ -33,10 +31,7 @@ for row in sheet['A1':'D35']:
         string = string + str(cell.value) + '\n\n'
     text_file.write(string)
 
-wb = load_workbook(filename1)
-sheet = wb.get_sheet_by_name('Лист1')
 
-sheet.cell(row=1, column=2).value
 for row in sheet['D1':'D35']:
     string = ''
     for cell in row:
@@ -46,10 +41,7 @@ for row in sheet['D1':'D35']:
 
 
 #сравниваем ключивые слова и литературу
-wb = load_workbook(filename1)
-sheet = wb.get_sheet_by_name('Лист1')
 
-sheet.cell(row=1, column=2).value
 for row in sheet['E1':'E3']:
     string = ''
     for cell in row:
@@ -57,17 +49,34 @@ for row in sheet['E1':'E3']:
     spisok_book.append(string)
 print(spisok_book)
 
-print('Слово "' + word +'" встречается' if word in ffile.read() else 'Нет такого слова')
+
+for row in sheet['F1':'F3']:
+    string = ''
+    for cell in row:
+        string = string + str(cell.value) + '\n\n'
+    spisok_description.append(string)
+    
+print(spisok_description)
 
 
 text_file.close()
-
-if komp == "УК-1":
-    key_word = spisok[0]
-
-
 with open('load.txt') as f:
     s = f.read()
+
+
+if komp == "УК-1":
+    search_text = spisok[0]
+    allres = re.findall(search_text, s)
+    if search_text == allres[0]:
+        print('К данной компетенции подходит книга : ' + spisok_book[0])
+   
+
+if komp == "УК-2":
+    search_text = spisok[1]
+    allres = re.findall(search_text, s)
+    if search_text == allres[0]:
+        print('К данной компетенции подходит книга : ' + spisok_book[1])
+    
 
 search_text = spisok[1]
 #search_text = r"философии"
@@ -77,4 +86,4 @@ if allres !=0:
 
 print(allres)
 
-print(key_word)
+
