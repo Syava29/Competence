@@ -73,19 +73,25 @@ with open('load.txt') as f:
 #предлагаем лиетратуру
 
 if komp == "УК-1":
+    
     fword = re.search(r'\w+', str(spisok_description))
     search_text = spisok[00]
     allres = re.findall(search_text, str(spisok_description))
+    
     k1 = 0
     if search_text == allres[0]:
         print('К данной компетенции подходит книга : ' + str(fword.group(0)))
 
 #предлагаем лиетратуру
 if komp == "УК-2":
-    search_text = spisok[1]
-    allres = re.findall(search_text, s)
+   
+    fword = re.search(r'\w+', str(spisok_description))
+    search_text = spisok[0]
+    allres = re.findall(search_text, str(spisok_description))
+    
+    k1 = 0
     if search_text == allres[0]:
-        print('К данной компетенции подходит книга : ' + spisok_book[1])
+        print('К данной компетенции подходит книга : ' + str(fword.group(0)))
 #предлагаем лиетратуру
 if komp == "УК-3":
     search_text = spisok[2]
