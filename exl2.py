@@ -1,7 +1,9 @@
 #import openpyxl as excl
+from collections import Counter
 from openpyxl import load_workbook
 import numpy as np
 import re 
+
 #название файлов
 filename1 = "Компетенции.xlsx"
 filename2 = "load.txt"
@@ -11,7 +13,7 @@ filename4 = "soderzh.txt"
 spisok = []
 spisok_book = []
 spisok_description = []
-
+spisok_zuv = []
 
 komp = input()    #     ввод индикатора компетенции пользователем
 
@@ -43,6 +45,22 @@ for row in sheet['D1':'D35']:
 
     result_key = re.findall(r'\w+', string1)
     
+# Загружаем ЗУВы и разбиваем их на слова, а также удаляем Знать, Уметь, Владеть
+for row in sheet['C1':'C35']:
+    zuv = ''
+    for cell in row:
+        zuv = zuv + str(cell.value)
+        your_string = zuv
+        removal_list = ['Знать','Уметь','Владеть']
+        for word in removal_list:
+            your_string = your_string.replace(word, '')   
+        
+        result_key = re.findall(r'\w+', your_string)
+                
+    spisok_zuv.append(result_key)
+    col_count = Counter(spisok_zuv)     
+    print(col_count)
+
 
 #сравниваем ключивые слова и литературу
 
