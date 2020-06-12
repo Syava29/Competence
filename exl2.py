@@ -6,6 +6,8 @@ import re
 
 #название файлов
 filename1 = "Компетенции.xlsx"
+filename_books = "spisok_knig.xlsx"
+
 filename2 = "load.txt"
 filename3 = "key_word.txt"
 filename4 = "soderzh.txt"
@@ -14,8 +16,8 @@ spisok = []
 spisok_book = []
 spisok_description = []
 spisok_zuv = []
-
-komp = input()    #     ввод индикатора компетенции пользователем
+spisok_content = []
+#komp = input()    #     ввод индикатора компетенции пользователем
 
 filename = "load.txt"
 ffile = open(filename,'r')
@@ -25,17 +27,20 @@ text_file = open(filename2, 'w')
 text_file2 = open(filename3, 'w')
 #       считываем данные из excel
 wb = load_workbook(filename1)
+wb_books = load_workbook(filename_books)
+sheet_books = wb_books['Лист1']
 sheet = wb['Лист1']
-mtrx = np.zeros([100,3])
 
-sheet.cell(row=1, column=2).value
-for row in sheet['A1':'C35']:
+
+sheet_books.cell(row=2, column=1).value
+for row in sheet_books['A1':'CO3']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
     text_file.write(string)
-    result_main = re.findall(r'\w+', string)
-   
+    result_main = re.sub(r'\d', '', string)
+    result_main = re.findall(r'\w+', result_main)
+    spisok_content.append(result_main)  
 
 for row in sheet['D1':'D35']:
     string1 = ''
@@ -56,10 +61,16 @@ for row in sheet['C1':'C35']:
             your_string = your_string.replace(word, '')   
         
         result_key = re.findall(r'\w+', your_string)
-                
-    spisok_zuv.append(result_key)
-    col_count = Counter(spisok_zuv)     
-    print(col_count)
+        col_count = Counter(result_key).most_common(3)    
+        #sorted(Counter(result_key).elements())
+        #print(sorted(Counter(result_key).elements()))
+        print(col_count)
+        
+        spisok_zuv.append(result_key)
+
+
+
+
 
 
 #сравниваем ключивые слова и литературу
@@ -90,33 +101,7 @@ with open('load.txt') as f:
 
 #предлагаем лиетратуру
 
-if komp == "УК-1":
-    
-    fword = re.search(r'\w+', str(spisok_description))
-    search_text = spisok[00]
-    allres = re.findall(search_text, str(spisok_description))
-    
-    k1 = 0
-    if search_text == allres[0]:
-        print('К данной компетенции подходит книга : ' + str(fword.group(0)))
 
-#предлагаем лиетратуру
-if komp == "УК-2":
-   
-    fword = re.search(r'\w+', str(spisok_description))
-    search_text = spisok[0]
-    allres = re.findall(search_text, str(spisok_description))
-    
-    k1 = 0
-    if search_text == allres[0]:
-        print('К данной компетенции подходит книга : ' + str(fword.group(0)))
-#предлагаем лиетратуру
-if komp == "УК-3":
-    search_text = spisok[2]
-    allres = re.findall(search_text, s)
-    if search_text == allres[0]:
-        print('К данной компетенции подходит книга : ' + spisok_book[2])
-    
 
 search_text = spisok[1]
 #search_text = r"философии"
@@ -127,8 +112,8 @@ if allres !=0:
 
 strstr = open(filename,'r')
 
-result1 = re.findall(r'\w+', string3)
+#result1 = re.findall(r'\w+', string1)
+#result111=list(set(col_count) & set(spisok))
 
-
-
+print(result111)
 

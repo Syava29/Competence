@@ -18,3 +18,7 @@ col = ['blue','red','yellow','green']
 for color in col:
 
     print (color, col_count[color])
+
+
+result111=list(set(z) & set(col))
+print(result111)
