@@ -31,6 +31,35 @@ wb_books = load_workbook(filename_books)
 sheet_books = wb_books['Лист1']
 sheet = wb['Лист1']
 
+
+
+
+
+
+
+
+# Загружаем ЗУВы и разбиваем их на слова, а также удаляем Знать, Уметь, Владеть
+for row in sheet['C1':'C35']:
+    zuv = ''
+    for cell in row:
+        zuv = zuv + str(cell.value)
+        your_string = zuv
+        removal_list = ['Знать','Уметь','Владеть', ' и ', 'для', 'None', ' в ', ' на ', 'знать']
+        for word in removal_list:
+            your_string = your_string.replace(word, '')   
+        
+    result_key = re.findall(r'\w+', your_string)
+    col_count = Counter(result_key).most_common(5)    
+    
+    result_main23 = re.sub(r'\d', '', str(col_count))
+    res_res = re.findall(r'\w+', result_main23)
+        
+     
+       
+    spisok_zuv.append(result_main23) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
+        
+    #print(res_res)
+
 # Парсим Содержание книг
 sheet_books.cell(row=2, column=1).value
 for row in sheet_books['A1':'CO4']:
@@ -46,29 +75,21 @@ for row in sheet_books['A1':'CO4']:
     result_main = re.findall(r'\w+', result_main)
     col_count_books = Counter(result_main).most_common(5)
     res_main = re.sub(r'\d', '', str(col_count_books))
-    spisok_content.append(res_main)  # Список слов из содержаний книг
-   
-# Загружаем ЗУВы и разбиваем их на слова, а также удаляем Знать, Уметь, Владеть
-for row in sheet['C1':'C35']:
-    zuv = ''
-    for cell in row:
-        zuv = zuv + str(cell.value)
-        your_string = zuv
-        removal_list = ['Знать','Уметь','Владеть', ' и ', 'для', 'None', ' в ', ' на ', 'знать']
-        for word in removal_list:
-            your_string = your_string.replace(word, '')   
-        
-        result_key = re.findall(r'\w+', your_string)
-        col_count = Counter(result_key).most_common(3)    
     
-        result_main23 = re.sub(r'\d', '', str(col_count))
-        res_res = re.findall(r'\w+', result_main23)
-        result111=list(set(res_res) & set(spisok_content))
-        #search_str = re.findall(str(res_res), str(spisok_content))
-        print(result111)
-    spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
-        
-    #print(res_res)
+    testtt = Counter(result_main)
+    #print(testtt.keys())
+    result111=list(set(spisok_zuv) & set(testtt.keys()))
+    
+    spisok_content.append(testtt.keys(3))  # Список слов из содержаний книг
+   
+
+
+
+
+
+
+
+
 
 
 
@@ -105,15 +126,11 @@ with open('load.txt') as f:
 
 #print(result111)
 
-    
-
-
 #search_text = spisok[1]
 #search_text = r"философии"
 #allres = re.findall(search_text, s)
 #if allres !=0: 
   #  print("Литература есть")
-
 
 #strstr = open(filename,'r')
 
