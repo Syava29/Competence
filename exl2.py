@@ -33,7 +33,7 @@ sheet = wb['Лист1']
 
 # Парсим Содержание книг
 sheet_books.cell(row=2, column=1).value
-for row in sheet_books['A1':'CO3']:
+for row in sheet_books['A1':'CO4']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
@@ -44,17 +44,10 @@ for row in sheet_books['A1':'CO3']:
     
     result_main = re.sub(r'\d', '', your_string)
     result_main = re.findall(r'\w+', result_main)
-    col_count_books = Counter(result_main).most_common(1)
-    spisok_content.append(col_count_books)  # Список слов из содержаний книг
-
-for row in sheet['D1':'D35']:
-    string1 = ''
-    for cell in row:
-        string1 = string1 + str(cell.value)
-    spisok.append(string1)
-
-    result_key = re.findall(r'\w+', string1)
-    
+    col_count_books = Counter(result_main).most_common(5)
+    res_main = re.sub(r'\d', '', str(col_count_books))
+    spisok_content.append(res_main)  # Список слов из содержаний книг
+   
 # Загружаем ЗУВы и разбиваем их на слова, а также удаляем Знать, Уметь, Владеть
 for row in sheet['C1':'C35']:
     zuv = ''
@@ -66,14 +59,16 @@ for row in sheet['C1':'C35']:
             your_string = your_string.replace(word, '')   
         
         result_key = re.findall(r'\w+', your_string)
-        col_count = Counter(result_key).most_common(5)    
-        #sorted(Counter(result_key).elements())
-        #print(sorted(Counter(result_key).elements()))
-        #print(col_count)
+        col_count = Counter(result_key).most_common(3)    
+    
         result_main23 = re.sub(r'\d', '', str(col_count))
         res_res = re.findall(r'\w+', result_main23)
-        spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
-        print(res_res)
+        result111=list(set(res_res) & set(spisok_content))
+        #search_str = re.findall(str(res_res), str(spisok_content))
+        print(result111)
+    spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
+        
+    #print(res_res)
 
 
 
@@ -106,17 +101,21 @@ with open('load.txt') as f:
     s = f.read()
 
 #предлагаем лиетратуру
+#result111=list(set(spisok_content) & set(result_main))
+
+#print(result111)
+
+    
 
 
-
-search_text = spisok[1]
+#search_text = spisok[1]
 #search_text = r"философии"
-allres = re.findall(search_text, s)
-if allres !=0: 
-    print("Литература есть")
+#allres = re.findall(search_text, s)
+#if allres !=0: 
+  #  print("Литература есть")
 
 
-strstr = open(filename,'r')
+#strstr = open(filename,'r')
 
 #result1 = re.findall(r'\w+', string1)
 #result111=list(set(col_count) & set(spisok))
