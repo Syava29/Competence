@@ -17,6 +17,8 @@ spisok_book = []
 spisok_description = []
 spisok_zuv = []
 spisok_content = []
+spisok_nazv = []
+spisok_komp = []
 #komp = input()    #     ввод индикатора компетенции пользователем
 
 filename = "load.txt"
@@ -56,13 +58,22 @@ for row in sheet['C1':'C35']:
         
      
        
-    spisok_zuv.append(result_main23) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
+    spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
         
     #print(res_res)
 
+for row in sheet['A1':'A35']:
+    string = ''
+    for cell in row:
+        string = string + str(cell.value)
+        your_string = string
+
+    spisok_komp.append(your_string)
+
+
 # Парсим Содержание книг
 sheet_books.cell(row=2, column=1).value
-for row in sheet_books['A1':'CO4']:
+for row in sheet_books['A1':'CO6']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
@@ -75,17 +86,36 @@ for row in sheet_books['A1':'CO4']:
     result_main = re.findall(r'\w+', result_main)
     col_count_books = Counter(result_main).most_common(5)
     res_main = re.sub(r'\d', '', str(col_count_books))
-    
+    res_main = re.findall(r'\w+', res_main)
     testtt = Counter(result_main)
     #print(testtt.keys())
-    result111=list(set(spisok_zuv) & set(testtt.keys()))
+   # result111=list(set(spisok_zuv) & set(testtt.keys()))
     
-    spisok_content.append(testtt.keys(3))  # Список слов из содержаний книг
-   
+    spisok_content.append(res_main)  # Список слов из содержаний книг
+# список названий
+for row in sheet_books['A1':'A6']:
+    string = ''
+    for cell in row:
+        string = string + str(cell.value) + '\n\n'
+        your_string = string
+
+    spisok_nazv.append(your_string)
 
 
 
-
+#print(spisok_zuv.__len__())
+#print(spisok_content.__len__())
+#print(spisok_zuv[0])
+i = 0
+while i < spisok_zuv.__len__():
+    result111=list(set(spisok_content[i]) & set(testtt.keys()))
+    if result111.__len__() != 0:
+        
+        print(spisok_content[i])
+        print(spisok_nazv[i])
+    
+    #print(spisok_content[i])
+    i = i + 1
 
 
 
@@ -104,7 +134,7 @@ for row in sheet['E1':'E3']:
     spisok_book.append(string2)
     result1 = re.findall(r'\w+', string2)
     
-print('Список литературы : ' + str(spisok_book))
+#print('Список литературы : ' + str(spisok_book))
 
 
 for row in sheet['F1':'F3']:
