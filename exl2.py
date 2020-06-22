@@ -73,7 +73,7 @@ for row in sheet['A1':'A35']:
 
 # Парсим Содержание книг
 sheet_books.cell(row=2, column=1).value
-for row in sheet_books['A1':'CO6']:
+for row in sheet_books['A1':'HD8']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
@@ -93,7 +93,7 @@ for row in sheet_books['A1':'CO6']:
     
     spisok_content.append(res_main)  # Список слов из содержаний книг
 # список названий
-for row in sheet_books['A1':'A6']:
+for row in sheet_books['A1':'A8']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
@@ -107,15 +107,20 @@ for row in sheet_books['A1':'A6']:
 #print(spisok_content.__len__())
 #print(spisok_zuv[0])
 i = 0
+k = 0
 while i < spisok_zuv.__len__():
-    result111=list(set(spisok_content[i]) & set(testtt.keys()))
-    if result111.__len__() != 0:
-        
-        print(spisok_content[i])
-        print(spisok_nazv[i])
+    while k < spisok_content.__len__():
+        result111=list(set(spisok_content[k]) & set(spisok_zuv[i]))
+        if result111.__len__() != 0:
+            print(spisok_komp[i])
+            print(spisok_content[k])
+            print(spisok_nazv[k])
+            
+        k = k + 1
     
-    #print(spisok_content[i])
+    k = 0
     i = i + 1
+   
 
 
 
