@@ -19,7 +19,7 @@ spisok_zuv = []
 spisok_content = []
 spisok_nazv = []
 spisok_komp = []
-#komp = input()    #     ввод индикатора компетенции пользователем
+input_user_komp = input()    #     ввод индикатора компетенции пользователем
 
 filename = "load.txt"
 ffile = open(filename,'r')
@@ -59,7 +59,7 @@ for row in sheet['C1':'C35']:
      
        
     spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
-        
+    text_file2.write(str(res_res))    
     #print(res_res)
 
 for row in sheet['A1':'A35']:
@@ -73,7 +73,7 @@ for row in sheet['A1':'A35']:
 
 # Парсим Содержание книг
 sheet_books.cell(row=2, column=1).value
-for row in sheet_books['A1':'HD8']:
+for row in sheet_books['A1':'HD9']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
@@ -93,7 +93,7 @@ for row in sheet_books['A1':'HD8']:
     
     spisok_content.append(res_main)  # Список слов из содержаний книг
 # список названий
-for row in sheet_books['A1':'A8']:
+for row in sheet_books['A1':'A9']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
@@ -112,10 +112,11 @@ while i < spisok_zuv.__len__():
     while k < spisok_content.__len__():
         result111=list(set(spisok_content[k]) & set(spisok_zuv[i]))
         if result111.__len__() != 0:
-            print(spisok_komp[i])
-            print(spisok_content[k])
-            print(spisok_nazv[k])
-            
+            #print(spisok_komp[i])
+            #print(spisok_content[k])
+            #print(spisok_nazv[k])
+            if input_user_komp == spisok_komp[i]:
+                print('Для данной компетенции подходит кинга: ' + str(spisok_nazv[k]))    
         k = k + 1
     
     k = 0
