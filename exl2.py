@@ -19,6 +19,7 @@ spisok_zuv = []
 spisok_content = []
 spisok_nazv = []
 spisok_komp = []
+print('Введите индикатор ')
 input_user_komp = input()    #     ввод индикатора компетенции пользователем
 
 filename = "load.txt"
@@ -39,12 +40,12 @@ for row in sheet['C1':'C35']:
     for cell in row:
         zuv = zuv + str(cell.value)
         your_string = zuv
-        removal_list = ['Знать','Уметь','Владеть', ' и ', 'для', 'None', ' в ', ' на ', 'знать']
+        removal_list = ['Знать','Уметь','Владеть', ' и ', 'для', 'None', ' в ', ' на ',' по ', 'знать', 'Задача', 'Лабораторная', 'Практикум', 'Краткое', 'cодержание', 'Задачи', 'Вариант','Основные']
         for word in removal_list:
             your_string = your_string.replace(word, '')   
         
     result_key = re.findall(r'\w+', your_string)
-    col_count = Counter(result_key).most_common(5)    
+    col_count = Counter(result_key)    
     
     result_main23 = re.sub(r'\d', '', str(col_count))
     res_res = re.findall(r'\w+', result_main23)
@@ -64,27 +65,27 @@ for row in sheet['A1':'A35']:
 
 # Парсим Содержание книг
 sheet_books.cell(row=2, column=1).value
-for row in sheet_books['A1':'HD9']:
+for row in sheet_books['A1':'HK19']:
     string = ''
     for cell in row:
         string = string + str(cell.value) + '\n\n'
         your_string = string
-        removal_list = [' и ',' а ','None' , 'Глава', ' в ']
+        removal_list = [' и ',' а ',' к ','None' , 'Глава', ' в ', 'Задача', 'Лабораторная', 'Практикум', 'Краткое', 'содержание', 'Задачи', 'Вариант','главы','упражнения', 'работы','Основные']
         for word in removal_list:
             your_string = your_string.replace(word, '')  
     
     result_main = re.sub(r'\d', '', your_string)
     result_main = re.findall(r'\w+', result_main)
-    col_count_books = Counter(result_main).most_common(5)
+    col_count_books = Counter(result_main)
     res_main = re.sub(r'\d', '', str(col_count_books))
     res_main = re.findall(r'\w+', res_main)
     testtt = Counter(result_main) 
     spisok_content.append(res_main)  # Список слов из содержаний книг
 # список названий
-for row in sheet_books['A1':'A9']:
+for row in sheet_books['A1':'A19']:
     string = ''
     for cell in row:
-        string = string + str(cell.value) + '\n\n'
+        string = string + str(cell.value)
         your_string = string
 
     spisok_nazv.append(your_string)
@@ -94,12 +95,13 @@ k = 0
 while i < spisok_zuv.__len__():
     while k < spisok_content.__len__():
         result111=list(set(spisok_content[k]) & set(spisok_zuv[i]))
-        if result111.__len__() != 0:
-            #print(spisok_komp[i])
+        if result111.__len__() > 5:
+            print(spisok_komp[i])
             #print(spisok_content[k])
-            #print(spisok_nazv[k])
+            #print(spisok_zuv[i])
+            print(spisok_nazv[k])
             if input_user_komp == spisok_komp[i]:
-                print('Для данной компетенции подходит кинга: ' + str(spisok_nazv[k]))    
+                print('Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')    
         k = k + 1
     
     k = 0
