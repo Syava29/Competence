@@ -1,4 +1,30 @@
 from collections import Counter
+
+
+
+
+
+from tkinter import *  
+  
+  
+def clicked():  
+    res = "Введите код компетенции (УК-1 ... ПК-23) {}".format(txt.get())  
+    lbl.configure(text=res)  
+  
+  
+window = Tk()  
+window.title("Подбор литературы по компетенциям")  
+window.geometry('400x250')  
+lbl = Label(window, text="Введите код компетенции (УК-1 ... ПК-23)")  
+lbl.grid(column=0, row=0)  
+txt = Entry(window,width=10)  
+txt.grid(column=1, row=0)  
+btn = Button(window, text="Подобрать литературу", command=clicked)  
+btn.grid(column=2, row=0)  
+window.mainloop()
+
+
+
 # Создать список
 
 z = ['blue', 'red', 'blue', 'yellow', 'blue', 'red']

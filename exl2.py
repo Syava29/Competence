@@ -3,6 +3,8 @@ from collections import Counter
 from openpyxl import load_workbook
 import numpy as np
 import re 
+from tkinter import * 
+from tkinter import scrolledtext  
 
 #название файлов
 filename1 = "Компетенции.xlsx"
@@ -19,8 +21,8 @@ spisok_zuv = []
 spisok_content = []
 spisok_nazv = []
 spisok_komp = []
-print('Введите индикатор ')
-input_user_komp = input()    #     ввод индикатора компетенции пользователем
+#print('Введите индикатор ')
+#input_user_komp = input()    #     ввод индикатора компетенции пользователем
 
 filename = "load.txt"
 ffile = open(filename,'r')
@@ -40,18 +42,14 @@ for row in sheet['C1':'C35']:
     for cell in row:
         zuv = zuv + str(cell.value)
         your_string = zuv
-        removal_list = ['Знать','Уметь','Владеть', ' и ', 'для', 'None', ' в ', ' на ',' по ', 'знать', 'Задача', 'Лабораторная', 'Практикум', 'Краткое', 'cодержание', 'Задачи', 'Вариант','Основные']
+        removal_list = ['Знать','Уметь','Владеть', ' и ', 'для', 'None', ' в ', ' на ',' по ', 'знать', 'Задача', 'Лабораторная', 'Практикум', 'Краткое', 'cодержание', 'Задачи', 'Вариант','Основные', ' с ', ' к ', ' при ']
         for word in removal_list:
             your_string = your_string.replace(word, '')   
         
     result_key = re.findall(r'\w+', your_string)
-    col_count = Counter(result_key)    
-    
+    col_count = Counter(result_key).most_common(5)   
     result_main23 = re.sub(r'\d', '', str(col_count))
-    res_res = re.findall(r'\w+', result_main23)
-        
-     
-       
+    res_res = re.findall(r'\w+', result_main23) 
     spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
     text_file2.write(str(res_res))    
 
@@ -90,24 +88,62 @@ for row in sheet_books['A1':'A19']:
 
     spisok_nazv.append(your_string)
 
-i = 0
-k = 0
-while i < spisok_zuv.__len__():
-    while k < spisok_content.__len__():
-        result111=list(set(spisok_content[k]) & set(spisok_zuv[i]))
-        if result111.__len__() > 5:
-            print(spisok_komp[i])
-            #print(spisok_content[k])
-            #print(spisok_zuv[i])
-            print(spisok_nazv[k])
-            if input_user_komp == spisok_komp[i]:
-                print('Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')    
-        k = k + 1
-    
-    k = 0
-    i = i + 1
-   
 
+
+ 
+  
+  
+ 
+    
+  
+  
+
+
+
+
+
+
+
+# проверка совпадений самых популярных слов из ЗУВа с каждым содержанием книги
+def clicked():
+    txtscrol.delete(1.0, END)
+    i = 0
+    k = 0
+    #res = "Привет {}".format(txt.get())  
+    #lbl.configure(text=res)  
+    while i < spisok_zuv.__len__():
+        while k < spisok_content.__len__():
+            result111=list(set(spisok_content[k]) & set(spisok_zuv[i]))
+            if result111.__len__() > 1:
+                #print(spisok_komp[i])
+                #print(spisok_content[k])
+                #print(spisok_zuv[i])
+                #print(spisok_nazv[k])
+                if txt.get() == spisok_komp[i]:
+                    txtscrol.insert(INSERT, 'Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + "\n\n")
+                    #lbl.configure(text='Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')
+                    #print('Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')    
+            k = k + 1
+        
+        k = 0
+        i = i + 1
+   
+window = Tk()  
+window.title("Подбор литературы по компетенциям")  
+window.geometry('1500x800')  
+lbl_main = Label(window, text = 'Шаг 1')
+lbl_main.grid(column=0, row=0)
+lbl_main2 = Label(window, text = 'Шаг 2 - нажмите на кнопку')
+lbl_main2.grid(column=3, row=0) 
+lbl = Label(window, text="Введите код компетенции в текстовое поле (УК-1 ... ПК-23)", font=("Arial Bold", 10))  
+lbl.grid(column=0, row=1)  
+txt = Entry(window,width=20)  
+txt.grid(column=2, row=1)   
+txtscrol = scrolledtext.ScrolledText(window, width=100, height=10)  
+txtscrol.grid(column=3, row=2)
+btn = Button(window, text="Подобрать литературу", command=clicked) 
+btn.grid(column=3, row=1)  
+ 
 #сравниваем ключивые слова и литературу
 
 for row in sheet['E1':'E3']:
@@ -128,5 +164,5 @@ for row in sheet['F1':'F3']:
 
 text_file.close()
 
-
+window.mainloop()
 
