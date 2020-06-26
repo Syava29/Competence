@@ -10,9 +10,9 @@ from tkinter import scrolledtext
 filename1 = "Компетенции.xlsx"
 filename_books = "spisok_knig.xlsx"
 
-filename2 = "load.txt"
-filename3 = "key_word.txt"
-filename4 = "soderzh.txt"
+#filename2 = "load.txt"
+#filename3 = "key_word.txt"
+#filename4 = "soderzh.txt"
 #Листы 
 spisok = []
 spisok_book = []
@@ -24,12 +24,13 @@ spisok_komp = []
 #print('Введите индикатор ')
 #input_user_komp = input()    #     ввод индикатора компетенции пользователем
 
-filename = "load.txt"
-ffile = open(filename,'r')
+#filename = "load.txt"
+#ffile = open(filename,'r')
 
-soderzh = open(filename4, 'w')
-text_file = open(filename2, 'w')
-text_file2 = open(filename3, 'w')
+#soderzh = open(filename4, 'w')
+#text_file = open(filename2, 'w')
+#text_file2 = open(filename3, 'w')
+
 #       считываем данные из excel
 wb = load_workbook(filename1)
 wb_books = load_workbook(filename_books)
@@ -50,8 +51,7 @@ for row in sheet['C1':'C35']:
     col_count = Counter(result_key).most_common(5)   
     result_main23 = re.sub(r'\d', '', str(col_count))
     res_res = re.findall(r'\w+', result_main23) 
-    spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой
-    text_file2.write(str(res_res))    
+    spisok_zuv.append(res_res) # Список слов из ЗУВ для каждой компетенции для сравнния с литературой    
 
 for row in sheet['A1':'A35']:
     string = ''
@@ -79,6 +79,7 @@ for row in sheet_books['A1':'HK19']:
     res_main = re.findall(r'\w+', res_main)
     testtt = Counter(result_main) 
     spisok_content.append(res_main)  # Список слов из содержаний книг
+
 # список названий
 for row in sheet_books['A1':'A19']:
     string = ''
@@ -87,22 +88,6 @@ for row in sheet_books['A1':'A19']:
         your_string = string
 
     spisok_nazv.append(your_string)
-
-
-
- 
-  
-  
- 
-    
-  
-  
-
-
-
-
-
-
 
 # проверка совпадений самых популярных слов из ЗУВа с каждым содержанием книги
 def clicked():
@@ -127,7 +112,8 @@ def clicked():
         
         k = 0
         i = i + 1
-   
+
+# визуализация   
 window = Tk()  
 window.title("Подбор литературы по компетенциям")  
 window.geometry('1500x800')  
@@ -144,25 +130,6 @@ txtscrol.grid(column=3, row=2)
 btn = Button(window, text="Подобрать литературу", command=clicked) 
 btn.grid(column=3, row=1)  
  
-#сравниваем ключивые слова и литературу
-
-for row in sheet['E1':'E3']:
-    string2 = ''
-    for cell in row:
-        string2 = string2 + str(cell.value) + '\n\n'
-    spisok_book.append(string2)
-    result1 = re.findall(r'\w+', string2)
-    
-
-for row in sheet['F1':'F3']:
-    string3 = ''
-    for cell in row:
-        string3 = string3 + str(cell.value) + '\n\n'
-    spisok_description.append(string3)
-    soderzh.write(string3)
-    result1 = re.findall(r'\w+', string3)
-
-text_file.close()
 
 window.mainloop()
 
