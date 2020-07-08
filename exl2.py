@@ -97,7 +97,6 @@ def clicked():
                 if txt.get() == spisok_komp[i]:
                     txtscrol.insert(INSERT, 'Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + "\n\n")
                     txt_description.insert(INSERT, str(description_zuv[i]) + "\n\n")
-                    #lbl.configure(text='Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')
                     #print('Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')    
             k = k + 1
         
