@@ -90,14 +90,14 @@ def clicked():
         while k < spisok_content.__len__():
             result111=list(set(spisok_content[k]) & set(spisok_zuv[i]))
             if result111.__len__() > 1:
-                #print(spisok_komp[i])
-                #print(spisok_content[k])
-                #print(spisok_zuv[i])
-                #print(spisok_nazv[k])
+                print(spisok_komp[i])
+                print(spisok_content[k])
+                print(spisok_zuv[i])
+                print(spisok_nazv[k])
                 if txt.get() == spisok_komp[i]:
                     txtscrol.insert(INSERT, 'Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + "\n\n")
                     txt_description.insert(INSERT, str(description_zuv[i]) + "\n\n")
-                    #print('Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')    
+                    print('Для данной компетенции подходит кинга: "' + str(spisok_nazv[k]) + '"')    
             k = k + 1
         
         k = 0
